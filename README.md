@@ -5,11 +5,12 @@ This is a simple guide for testing. I've included two testing modules of python.
 #### Doctest
 
 Test cases are included in the function ``parse_csv`` within ``parse_csv.py`` already. 
-To run use the command: 
+To run, use the command: 
 	
   	python parse_csv.py
 
 If there is no notification(blankness) then all tests are passed.
+
 For more details on each test, use the command 
 	
 	python parse_csv.py -v
