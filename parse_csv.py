@@ -14,9 +14,40 @@ def check_field(value, pos, csv):
 
 	return: (boolean, int)
 		True if matching is possible, False otherwise.
-		The position for the checking of next element, -1 if the checking is done.
+		The position for the checking of next element, -1 if the checking is done
+	"""
+	
+	#elimination of space at the beginning of the field.
+	while csv[pos] == ' ': 
+		pos += 1
 
+	#comparison 
+	for it in value:
+		if pos >= len(csv):
+			return (False, -1)
+		if it != csv[pos]:
+			return (False, -1)
+		pos += 1
 
+	#elimination of space at the end of field.
+	while pos < len(csv) and csv[pos] == ' ':
+		pos += 1
+
+	#check if the current field is the last field in csv
+	if pos == len(csv):
+		return (True, -1)
+
+	if csv[pos] == ',':
+		return (True, pos + 1)
+
+	#check if the current field is the end of a line in csv	
+	if pos < len(csv) -1 and csv[pos] == '\r' and csv[pos+1] == '\n':
+		return (True, pos + 2)
+
+	return (False, -1)
+
+def parse_csv(result, csv):
+	"""
 	#Simple test case with 1 line and no special cases.
 	>>> parse_csv([["toan", "24", "male"]], "toan,24,male")
 	True
@@ -51,38 +82,6 @@ def check_field(value, pos, csv):
 	True
 
 	"""
-
-	#elimination of space at the beginning of the field.
-	while csv[pos] == ' ': 
-		pos += 1
-
-	#comparison 
-	for it in value:
-		if pos >= len(csv):
-			return (False, -1)
-		if it != csv[pos]:
-			return (False, -1)
-		pos += 1
-
-	#elimination of space at the end of field.
-	while pos < len(csv) and csv[pos] == ' ':
-		pos += 1
-
-	#check if the current field is the last field in csv
-	if pos == len(csv):
-		return (True, -1)
-
-	if csv[pos] == ',':
-		return (True, pos + 1)
-
-	#check if the current field is the end of a line in csv	
-	if pos < len(csv) -1 and csv[pos] == '\r' and csv[pos+1] == '\n':
-		return (True, pos + 2)
-
-	return (False, -1)
-
-def parse_csv(result, csv):
-
 	pos = 0
 	for line in result:
 		for value in line:
