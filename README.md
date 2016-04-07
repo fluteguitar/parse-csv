@@ -1,13 +1,13 @@
-# parse-csv
+## parse-csv
 
 This is a simple guide for testing. I've included two testing modules of python. 
 
-###* Doctest
+#### Doctest
 
 Test cases are included in the function ``parse_csv`` within ``parse_csv.py`` already. 
 To run use the command: 
 	
-  python parse_csv.py
+  	python parse_csv.py
 
 If there is no notification(blankness) then all tests are passed.
 For more details on each test, use the command 
@@ -17,7 +17,7 @@ For more details on each test, use the command
 Note that due to the nature of this testing module, all escape characters must be preceded by an additional
 flash character ('\'). This causes a little bit messy for the input data, so I decided to include Unittest module.
 
-###* Unittest
+#### Unittest
 
 Test cases are included in ``parse_csv_test.py``
 Compared to Doctest, Unittest has an disadvantage. There is no notifications (OK/not OK) for each test case.
